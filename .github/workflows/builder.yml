@@ -1,0 +1,21 @@
+name: Linux BPY builder
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: pull repo
+        uses: actions/checkout@v1
+        
+      - name: build bpy module
+        run: make
+        
+      - name: upload finished module
+        uses: actions/upload-artifact@master
+        with:
+          name: Blender-bpy
+          path: ./bpy

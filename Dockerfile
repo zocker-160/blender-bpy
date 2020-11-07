@@ -60,9 +60,9 @@ RUN rm -rf /home/tmp
 
 WORKDIR /home
 
-CMD bash
+RUN python3 -c "import bpy;print(dir(bpy.types));"
 
-#RUN python3 -c "import bpy;print(dir(bpy.types));"
+CMD bash
 
 
 #FROM python:3.7.9-buster

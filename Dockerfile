@@ -4,7 +4,7 @@ MAINTAINER zocker_160
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG PYTHON_VER=3.7.9
+ARG PYTHON_VER=3.7.7
 
 RUN apt-get update
 RUN apt-get -y install \
@@ -49,7 +49,7 @@ RUN make update
 RUN make -j14 bpy
 
 RUN mv /home/tmp/build_linux_bpy/bin/bpy.so /usr/local/lib/python3.7/site-packages
-RUN mv /home/tmp/lib/linux_centos7_x86_64/python/lib/python3.7/site-packages/2.91 /usr/local/lib/python3.7/site-packages/
+RUN mv /home/tmp/lib/linux_centos7_x86_64/python/lib/python3.7/site-packages/2.92 /usr/local/lib/python3.7/site-packages/
 
 # cleanup
 RUN apt-get autoclean \

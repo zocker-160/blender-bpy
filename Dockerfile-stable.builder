@@ -4,7 +4,7 @@ MAINTAINER zocker_160
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG PYTHON_VER=3.7.9
+ARG PYTHON_VER=3.7.7
 
 RUN apt-get update
 RUN apt-get -y install \

@@ -1,6 +1,6 @@
-# blender-docker-bpy
+# blender-bpy
 
-Blender as Python module in a Docker container
+Blender as Python module (Docker container is used for building)
 
 ### How to install
 

@@ -1,11 +1,11 @@
 build:
-	docker build . -f Dockerfile.builder -t blender:bpy
+	docker build . -f Dockerfile -t blender:bpy
 	docker run --rm -d --name bpy blender:bpy
 	docker cp bpy:/bpy .
-stable:
-	docker build . -f Dockerfile-stable.builder -t blender:bpy
+master:
+	docker build . -f Dockerfile.master -t blender:bpy
 	docker run --rm -d --name bpy blender:bpy
 	docker cp bpy:/bpy .
 clean:
+	docker stop bpy
 	docker rm blender:bpy
-	rm -rf ./bpy

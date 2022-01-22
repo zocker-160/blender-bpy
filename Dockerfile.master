@@ -4,7 +4,10 @@ MAINTAINER zocker_160
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG PYTHON_VER=3.7.7
+ARG PYTHON_VER=3.9.7
+ARG PYTHON_VER_MAJ=3.9
+ARG BLENDER_VERSION=3.0
+ARG BLENDER_TAG=v3.0.0
 
 RUN apt-get update
 RUN apt-get -y install \
@@ -35,7 +38,7 @@ ADD https://www.python.org/ftp/python/$PYTHON_VER/Python-$PYTHON_VER.tgz Python.
 RUN tar xzf Python.tgz
 WORKDIR /home/tmp/python/Python-$PYTHON_VER
 RUN ./configure --enable-optimizations
-RUN make -j14 install
+RUN make -j$(nproc) install
 
 WORKDIR /home/tmp
 RUN git clone https://git.blender.org/blender.git
@@ -45,19 +48,19 @@ RUN svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_cent
 
 WORKDIR /home/tmp/blender
 
-RUN make update
-RUN make -j14 bpy
+#RUN make update
+RUN make bpy
 
-RUN cp /home/tmp/build_linux_bpy/bin/bpy.so /usr/local/lib/python3.7/site-packages
-RUN cp -r /home/tmp/lib/linux_centos7_x86_64/python/lib/python3.7/site-packages/2.92 /usr/local/lib/python3.7/site-packages/
+RUN cp /home/tmp/build_linux_bpy/bin/bpy.so /usr/local/lib/python$PYTHON_VER_MAJ/site-packages
+RUN cp -r /home/tmp/lib/linux_centos7_x86_64/python/lib/python$PYTHON_VER_MAJ/site-packages/$BLENDER_VERSION /usr/local/lib/python$PYTHON_VER_MAJ/site-packages/
 
 WORKDIR /bpy
 
 RUN mv /home/tmp/build_linux_bpy/bin/bpy.so .
-RUN mv /home/tmp/lib/linux_centos7_x86_64/python/lib/python3.7/site-packages/2.92 .
+RUN mv /home/tmp/lib/linux_centos7_x86_64/python/lib/python$PYTHON_VER_MAJ/site-packages/$BLENDER_VERSION .
 
 # test if it works
-#RUN python3 -c "import bpy;print(dir(bpy.types));print(bpy.app.version_string);"
+RUN python3 -c "import bpy;print(dir(bpy.types));print(bpy.app.version_string);"
 
 CMD bash
 

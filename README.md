@@ -1,6 +1,6 @@
-# blender-docker-bpy
+# blender-bpy
 
-Blender as Python module in a Docker container
+Blender as Python module (Docker container is used for building)
 
 ### Run using Docker
 #### Use prebuilt Docker Container
@@ -32,6 +32,9 @@ tar xzf Python.tgz
 cd Python-3.7.7/
 ./configure --enable-optimizations
 sudo make install
+
+# if you want to install Python 3.7.7 alongside other versions, then use instead:
+sudo make altinstall
 ```
 
 #### Install Bpy module (precompiled)

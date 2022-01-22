@@ -2,9 +2,29 @@
 
 Blender as Python module in a Docker container
 
-### How to install
+### Run using Docker
+#### Use prebuilt Docker Container
+
+```bash
+docker run -it zocker160/blender-bpy
+```
+
+##### Docker Tags
+// TODO
+
+#### Build container yourself
+
+```bash
+git clone https://github.com/zocker-160/blender-docker-bpy.git
+docker build . -f Dockerfile -t blender:bpy
+docker run -it --name bpy blender:bpy
+```
+
+### How to run locally
 
 #### Install Python
+
+**NOTE**: replace the Python version with the appropriate one needed for each version of Blender!
 
 ```bash
 wget https://www.python.org/ftp/python/3.7.7/Python-3.7.7.tgz -O Python.tgz

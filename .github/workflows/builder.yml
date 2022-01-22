@@ -1,12 +1,13 @@
 name: Linux BPY builder
 
-on: [push]
+on:
+  push:
+    - master
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  stable:
     runs-on: ubuntu-latest
-
     steps:
       - name: pull repo
         uses: actions/checkout@v1
@@ -14,8 +15,33 @@ jobs:
       - name: build bpy module
         run: make
         
+      - name: cleanup
+        run: |
+          make clean
+          mv ./bpy ./bpy-stable
+        
       - name: upload finished module
         uses: actions/upload-artifact@master
         with:
           name: Blender-bpy
-          path: ./bpy
+          path: ./bpy-stable
+          
+  master:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull repo
+        uses: actions/checkout@v1
+        
+      - name: build bpy module
+        run: make
+        
+      - name: cleanup
+        run: |
+          make clean
+          mv ./bpy ./bpy-master
+        
+      - name: upload finished module
+        uses: actions/upload-artifact@master
+        with:
+          name: Blender-bpy
+          path: ./bpy-master

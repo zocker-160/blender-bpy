@@ -2,7 +2,8 @@ name: Linux BPY builder
 
 on:
   push:
-    - master
+    branches: 
+      - master
   workflow_dispatch:
 
 jobs:

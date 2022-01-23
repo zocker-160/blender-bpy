@@ -22,7 +22,7 @@ jobs:
       - name: upload finished module
         uses: actions/upload-artifact@master
         with:
-          name: Blender-bpy
+          name: Blender-bpy-stable
           path: ./bpy-stable
           
   master:
@@ -40,5 +40,5 @@ jobs:
       - name: upload finished module
         uses: actions/upload-artifact@master
         with:
-          name: Blender-bpy
+          name: Blender-bpy-master
           path: ./bpy-master

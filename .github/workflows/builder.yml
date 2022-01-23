@@ -24,8 +24,8 @@ jobs:
           docker push zocker160/blender-bpy:stable
           
         
-      - name: rename
-        run: mv ./bpy ./bpy-stable
+      #- name: rename
+      #  run: mv ./bpy ./bpy-stable
         
       #- name: upload finished module
       #  uses: actions/upload-artifact@master
@@ -49,8 +49,8 @@ jobs:
           docker build . -f Dockerfile.master -t zocker160/blender-bpy:beta
           docker push zocker160/blender-bpy:beta
         
-      - name: rename
-        run: mv ./bpy ./bpy-master
+      #- name: rename
+      #  run: mv ./bpy ./bpy-master
         
       #- name: upload finished module
       #  uses: actions/upload-artifact@master

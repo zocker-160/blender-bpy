@@ -10,7 +10,8 @@ docker run -it zocker160/blender-bpy
 ```
 
 ##### Docker Tags
-// TODO
+- latest stable: `zocker160/blender-bpy:stable`
+- from master at time of build: `zocker160/blender-bpy:beta`
 
 #### Build container yourself
 

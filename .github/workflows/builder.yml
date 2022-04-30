@@ -7,21 +7,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  stable:
-    runs-on: ubuntu-latest
-    steps:
-      - name: pull repo
-        uses: actions/checkout@v1
-        
-      - name: build bpy module
-        env:
-          HUB_NAME: ${{ secrets.DOCKER_NAME }}
-          HUB_KEY: ${{ secrets.DOCKER_TOKEN }}
-        run: |  
-          #make
-          docker login -u $HUB_NAME -p $HUB_KEY
-          docker build . -f Dockerfile -t zocker160/blender-bpy:stable
-          docker push zocker160/blender-bpy:stable
+#  stable:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: pull repo
+#        uses: actions/checkout@v1
+#        
+#      - name: build bpy module
+#        env:
+#          HUB_NAME: ${{ secrets.DOCKER_NAME }}
+#          HUB_KEY: ${{ secrets.DOCKER_TOKEN }}
+#        run: |  
+#          #make
+#          docker login -u $HUB_NAME -p $HUB_KEY
+#          docker build . -f Dockerfile -t zocker160/blender-bpy:stable
+#          docker push zocker160/blender-bpy:stable
           
         
       #- name: rename
@@ -46,7 +46,7 @@ jobs:
         run: |  
           #make
           docker login -u $HUB_NAME -p $HUB_KEY
-          docker build . -f Dockerfile.master -t zocker160/blender-bpy:beta
+          docker build . -f Dockerfile -t zocker160/blender-bpy:beta
           docker push zocker160/blender-bpy:beta
         
       #- name: rename
